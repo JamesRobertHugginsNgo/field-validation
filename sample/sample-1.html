@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="field.css">
+	<link rel="stylesheet" href="field-button.css">
+	<link rel="stylesheet" href="field-input.css">
+	<link rel="stylesheet" href="field-input-group.css">
+	<link rel="stylesheet" href="page-width.css">
+	<style>
+		body {
+			margin: 0;
+		}
+
+		main {
+			margin-left: 1rem;
+			margin-right: 1rem;
+		}
+
+		.field {
+			margin-bottom: 1rem;
+			margin-top: 1rem;
+		}
+	</style>
+</head>
+
+<body>
+	<main>
+		<div class="page-width">
+			<form action="#" method="get">
+				<div class="field">
+					<label for="text-field" class="field-label">Text Field</label>
+					<div class="field-help-text">Cannot be "0" or "ABC"</div>
+					<input name="text-field" required type="text" class="field-input" id="text-field">
+					<div class="field-help-text">Help text</div>
+					<div class="field-error-text"></div>
+				</div>
+
+				<div class="field">
+					<label for="disabled-text-field" class="field-label">Disabled Text Field</label>
+					<div class="field-help-text">Help text</div>
+					<input disabled name="disabled-text-field" required type="text" value="Text Value"
+						class="field-input" id="disabled-text-field">
+					<div class="field-help-text">Help text</div>
+					<div class="field-error-text"></div>
+				</div>
+
+				<div class="field">
+					<label for="readonly-text-field" class="field-label">Readonly Text Field</label>
+					<div class="field-help-text">Help text</div>
+					<input name="readonly-text-field" readonly required type="text" value="Text Value"
+						class="field-input" id="readonly-text-field">
+					<div class="field-help-text">Help text</div>
+					<div class="field-error-text"></div>
+				</div>
+
+				<div class="field">
+					<label for="email-field" class="field-label">Email</label>
+					<div class="field-help-text">Help text</div>
+					<input name="email-field" required type="email" id="email-field" class="field-input">
+					<div class="field-help-text">Help text</div>
+					<div class="field-error-text"></div>
+				</div>
+
+				<div class="field">
+					<label for="url-field" class="field-label">URL <span>(optional)</span></label>
+					<div class="field-help-text">Help text</div>
+					<input name="url-field" type="url" id="url-field" class="field-input">
+					<div class="field-help-text">Help text</div>
+					<div class="field-error-text"></div>
+				</div>
+
+				<fieldset class="field">
+					<legend class="field-label">Radio</legend>
+					<div class="field-help-text">Help text</div>
+					<div class="field-input-group">
+						<div>
+							<input name="radio-field" required type="radio" value="Radio 1" id="radio-field-1">
+							<label for="radio-field-1">Radio 1</label>
+						</div>
+						<div>
+							<input name="radio-field" required type="radio" value="Radio 2" id="radio-field-2">
+							<label for="radio-field-2">Radio 2</label>
+						</div>
+						<div>
+							<input name="radio-field" required type="radio" value="Radio 3" id="radio-field-3">
+							<label for="radio-field-3">Radio 3</label>
+						</div>
+					</div>
+					<div class="field-help-text">Help text</div>
+					<div class="field-error-text"></div>
+				</fieldset>
+
+				<p>
+					<input type="submit" value="Submit Form" class="field-button">
+					<input type="reset" value="Reset Form" class="field-button">
+				</p>
+			</form>
+		</div>
+	</main>
+
+	<script type="module">
+		import addFormFieldValidation from '../src/add-form-field-validation.js';
+		addFormFieldValidation(document.querySelector('form'), (el) => {
+			switch (el.name) {
+				case 'text-field':
+					el.fieldValidation.validator = (inputEl) => {
+						if (inputEl.value === '0') {
+							inputEl.setCustomValidity('Value must not be 0');
+							return;
+						}
+						if (inputEl.value === 'ABC') {
+							inputEl.setCustomValidity('Value must not be ABC');
+							return;
+						}
+					};
+					break;
+			}
+		});
+	</script>
+</body>
+
+</html>

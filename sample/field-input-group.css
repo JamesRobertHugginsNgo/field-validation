@@ -1,0 +1,24 @@
+/* Boilerplate: https://github.com/JamesRobertHugginsNgo/field-input-group/blob/4fb5e65675beb8fdae5da4cfc76d32a51a2c3432/src/style.css */
+/* Boilerplate: https://github.com/JamesRobertHugginsNgo/field-input-group/blob/1.0.0/src/style.css */
+
+.field-input-group {
+	background-color: white;
+	border: 1px solid lightgrey;
+	border-radius: 0.25rem;
+	color: black;
+	display: flex;
+	flex-direction: column;
+	font-size: 0.875em;
+	gap: 0.25rem;
+	line-height: normal;
+	padding: 0.5rem;
+
+	&>* {
+		display: flex;
+		gap: 0.25rem;
+	}
+
+	.field.field-error.show-field-error & {
+		border-color: darkred;
+	}
+}

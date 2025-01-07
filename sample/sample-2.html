@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="field.css">
+	<link rel="stylesheet" href="field-button.css">
+	<link rel="stylesheet" href="field-input.css">
+	<link rel="stylesheet" href="field-input-group.css">
+	<link rel="stylesheet" href="page-width.css">
+	<style>
+		body {
+			margin: 0;
+		}
+
+		main {
+			margin-left: 1rem;
+			margin-right: 1rem;
+		}
+
+		.field {
+			margin-bottom: 1rem;
+			margin-top: 1rem;
+		}
+
+		.full-name {
+			display: flex;
+			gap: 1rem;
+
+			& * {
+				display: flex;
+				flex-direction: column;
+				flex: 1;
+				gap: 0.25rem;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<main>
+		<div class="page-width">
+			<form action="#" method="get">
+				<fieldset class="field">
+					<legend class="field-label">Checkbox</legend>
+					<div class="field-help-text">Help text</div>
+					<div class="field-input-group">
+						<div class="field-input-row">
+							<input name="checkbox-field[]" type="checkbox" value="Checkbox 1" id="checkbox-field-1">
+							<label for="checkbox-field-1">Checkbox 1</label>
+						</div>
+						<div class="field-input-row">
+							<input name="checkbox-field[]" type="checkbox" value="Checkbox 2" id="checkbox-field-2">
+							<label for="checkbox-field-2">Checkbox 2</label>
+						</div>
+						<div class="field-input-row">
+							<input name="checkbox-field[]" type="checkbox" value="Checkbox 3" id="checkbox-field-3">
+							<label for="checkbox-field-3">Checkbox 3</label>
+						</div>
+					</div>
+					<div class="field-help-text">Help text</div>
+					<div class="field-error-text"></div>
+				</fieldset>
+
+				<fieldset class="field">
+					<legend class="field-label">Full Name</legend>
+					<div class="full-name">
+						<div>
+							<label for="first-name-field">First Name</label>
+							<input name="first-name-field" required type="text" id="first-name-field"
+								class="field-input">
+						</div>
+						<div>
+							<label for="last-name-field">Last Name</label>
+							<input name="last-name-field" required type="text" id="last-name-field" class="field-input">
+						</div>
+					</div>
+					<div class="field-help-text">Help text</div>
+					<div class="field-error-text"></div>
+				</fieldset>
+
+				<p>
+					<input type="button" value="Manually Submit Form" class="field-button">
+					<input type="reset" value="Reset Form" class="field-button">
+				</p>
+			</form>
+		</div>
+	</main>
+
+	<script type="module">
+		import addFormFieldValidation, { reportValidity } from '../src/add-form-field-validation.js';
+
+		const formEl = document.querySelector('form');
+
+		addFormFieldValidation(formEl, (el) => {
+			switch (el.name) {
+				case 'checkbox-field[]':
+					el.fieldValidation.validator = (inputEl) => {
+						const { fieldEl } = inputEl.fieldValidation;
+						const length = [...fieldEl.elements].filter(function (el) {
+							return el.checked;
+						}).length;
+						if (length === 0) {
+							inputEl.setCustomValidity('Select at least one of these options');
+						}
+					};
+					break;
+
+				case 'first-name-field':
+					el.fieldValidation.validator = (inputEl) => {
+						if (inputEl.validity.valueMissing) {
+							inputEl.setCustomValidity('First Name is missing');
+						}
+					};
+					break;
+
+				case 'last-name-field':
+					el.fieldValidation.validator = (inputEl) => {
+						if (inputEl.validity.valueMissing) {
+							inputEl.setCustomValidity('Last Name is missing');
+						}
+					};
+					break;
+			}
+		});
+
+		document.querySelector('input[type="button"]').addEventListener('click', (event) => {
+			if (!reportValidity(formEl)) {
+				return;
+			}
+
+			alert('SUBMIT')
+		});
+	</script>
+</body>
+
+</html>

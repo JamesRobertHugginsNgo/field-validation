@@ -5,6 +5,7 @@
 	- [add-form-field-validation](src/add-form-field-validation.js)
 - Sample Pages
 	- [Sample Page 1](sample/sample-1.html)
+	- [Sample Page 2](sample/sample-2.html)
 
 ## Alternate Views
 

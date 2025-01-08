@@ -68,9 +68,7 @@ function showValidity(inputEl) {
 
 function inputEventListener() {
 	checkValidity(this);
-
-	const { showValidity } = this.fieldValidation;
-	showValidity();
+	showValidity(this);
 }
 
 function invalidEventListener() {

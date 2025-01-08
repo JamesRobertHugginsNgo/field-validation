@@ -1,5 +1,7 @@
 # field-validation
 
+ A lightweight JavaScript client-side validation for form fields.
+
 - Boilerplate
 	- [add-input-field-validation](src/add-input-field-validation.js)
 	- [add-form-field-validation](src/add-form-field-validation.js)

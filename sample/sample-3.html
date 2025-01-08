@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="field.css">
+	<link rel="stylesheet" href="field-button.css">
+	<link rel="stylesheet" href="field-input.css">
+	<link rel="stylesheet" href="field-input-group.css">
+	<link rel="stylesheet" href="page-width.css">
+	<style>
+		body {
+			margin: 0;
+		}
+
+		main {
+			margin-left: 1rem;
+			margin-right: 1rem;
+		}
+
+		.field {
+			margin-bottom: 1rem;
+			margin-top: 1rem;
+		}
+	</style>
+</head>
+
+<body>
+	<main>
+		<div class="page-width">
+			<form action="#" method="get">
+				<fieldset class="field">
+					<legend class="field-label">Toggle</legend>
+					<div class="field-help-text">Help text</div>
+					<div class="field-input-group">
+						<div class="field-input-row">
+							<input name="toggle-field" required type="radio" value="Show" id="toggle-field-1">
+							<label for="toggle-field-1">Show</label>
+						</div>
+						<div class="field-input-row">
+							<input name="toggle-field" required type="radio" value="Hide" id="toggle-field-2">
+							<label for="toggle-field-2">Hide</label>
+						</div>
+					</div>
+					<div class="field-help-text">Help text</div>
+					<div class="field-error-text"></div>
+				</fieldset>
+
+				<div class="field" style="display: none;">
+					<label for="text-toggle">Toggle Text</label>
+					<div class="field-help-text">Help text</div>
+					<input disabled name="toggle-text-field" required type="text" class="field-input"
+						id="toggle-text-field">
+					<div class="field-help-text">Help text</div>
+					<div class="field-error-text"></div>
+				</div>
+
+				<p style="display: none;">
+					<button type="button" class="field-button">Toggle Value</button>
+				</p>
+
+				<p>
+					<input type="submit" value="Submit Form" class="field-button">
+					<input type="reset" value="Reset Form" class="field-button">
+				</p>
+			</form>
+		</div>
+	</main>
+
+	<script type="module">
+		import addFormFieldValidation, { reportValidity } from '../src/add-form-field-validation.js';
+
+		const formEl = document.querySelector('form');
+		const toggleTextFieldEl = document.getElementById('toggle-text-field');
+		const toggleButtonEl = document.querySelector('button');
+		const toggleButtonWrapperEl = toggleButtonEl.closest('p');
+
+		addFormFieldValidation(formEl);
+
+		document.getElementById('toggle-field-1').addEventListener('input', () => {
+			toggleTextFieldEl.removeAttribute('disabled');
+			const { fieldEl } = toggleTextFieldEl.fieldValidation;
+			fieldEl.style.removeProperty('display');
+
+			toggleButtonWrapperEl.style.removeProperty('display');
+		});
+
+		document.getElementById('toggle-field-2').addEventListener('input', () => {
+			toggleTextFieldEl.setAttribute('disabled', '');
+			const { fieldEl } = toggleTextFieldEl.fieldValidation;
+			fieldEl.style.setProperty('display', 'none');
+
+			toggleButtonWrapperEl.style.setProperty('display', 'none');
+		});
+
+		toggleButtonEl.addEventListener('click', (event) => {
+			if (!toggleTextFieldEl.value) {
+				toggleTextFieldEl.value = '123';
+			} else {
+				toggleTextFieldEl.value = '';
+			}
+			toggleTextFieldEl.dispatchEvent(new Event('input'));
+			toggleTextFieldEl.focus();
+		});
+
+		formEl.addEventListener('submit', (event) => {
+			event.preventDefault();
+			alert('SUBMITTED');
+		})
+	</script>
+</body>
+
+</html>

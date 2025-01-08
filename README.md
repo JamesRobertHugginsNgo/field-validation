@@ -8,6 +8,7 @@
 - Sample Pages
 	- [Sample Page 1](sample/sample-1.html)
 	- [Sample Page 2](sample/sample-2.html)
+	- [Sample Page 3](sample/sample-3.html)
 
 ## See Also
 

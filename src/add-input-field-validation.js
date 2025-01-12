@@ -1,4 +1,5 @@
-/* Boilerplate - Optional: for fieldset fieldEl */
+/* BOILERPLATE */
+
 function getValidationMessages(fieldsetEl) {
 	const result = [];
 
@@ -27,7 +28,6 @@ function resetValidity(inputEl) {
 		inputEl.setCustomValidity('');
 	}
 
-	/* Boilerplate - Optional: for fieldset fieldEl */
 	if (errorEl && fieldEl instanceof HTMLFieldSetElement) {
 		const validationMessages = getValidationMessages(fieldEl);
 		if (validationMessages.length > 0) {
@@ -76,7 +76,6 @@ function invalidEventListener() {
 
 	if (errorEl) {
 		if (fieldEl instanceof HTMLFieldSetElement) {
-			/* Boilerplate - Optional: for fieldset fieldEl */
 			errorEl.textContent = getValidationMessages(fieldEl).join(', ');
 		} else {
 			errorEl.textContent = this.validationMessage;

@@ -1,7 +1,9 @@
+/* BOILERPLATE */
+
 import addInputFieldValidation, { removeInputFieldValidation } from './add-input-field-validation.js';
 
 function resetEventListener() {
-	setTimeout(() => { // NEEDED TO RUN AFTER THE VALUE HAS RESETTED
+	setTimeout(() => { // SetTimeout() is needed to run after the value has resetted.
 		for (const inputEl of this.elements) {
 			inputEl.fieldValidation?.hideValidity();
 			inputEl.fieldValidation?.checkValidity();

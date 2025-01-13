@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="field.css">
+	<link rel="stylesheet" href="field-button.css">
+	<link rel="stylesheet" href="field-input.css">
+	<link rel="stylesheet" href="page-width.css">
+	<style>
+		body {
+			margin: 0;
+		}
+
+		main {
+			margin-left: 1rem;
+			margin-right: 1rem;
+		}
+
+		.field {
+			margin-bottom: 1rem;
+			margin-top: 1rem;
+		}
+	</style>
+</head>
+
+<body>
+	<main>
+		<div class="page-width">
+			<form action="#" method="get">
+				<div class="field">
+					<label for="text-field" class="field-label">Text Field</label>
+					<div class="field-help-text">Help text</div>
+					<input name="text-field" required type="text" class="field-input" id="text-field">
+					<div class="field-help-text">Help text</div>
+					<div class="field-error-text"></div>
+				</div>
+
+				<sample-web-component label="Web Component 1" name="component-1" posthelptext="Help Text"
+					prehelptext="Help Text" required class="test"></sample-web-component>
+
+				<sample-web-component label="Web Component 2" name="component-2" posthelptext="Help Text"
+					prehelptext="Help Text" required value="Text Value"></sample-web-component>
+
+				<sample-web-component label="Web Component 3" name="component-3" posthelptext="Help Text"
+					prehelptext="Help Text" required></sample-web-component>
+
+				<p>
+					<input type="submit" value="Submit Form" class="field-button">
+					<input type="reset" value="Reset Form" class="field-button">
+				</p>
+			</form>
+		</div>
+	</main>
+
+	<script type="module">
+		import addFormFieldValidation from '../src/add-form-field-validation.js';
+		import './sample-web-component.js';
+
+		addFormFieldValidation(document.querySelector('form'));
+	</script>
+</body>
+
+</html>

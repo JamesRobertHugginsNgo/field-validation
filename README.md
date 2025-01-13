@@ -6,9 +6,10 @@
 	- [add-input-field-validation](src/add-input-field-validation.js)
 	- [add-form-field-validation](src/add-form-field-validation.js)
 - Sample Pages
-	- [Sample Page 1](sample/sample-1.html)
-	- [Sample Page 2](sample/sample-2.html)
-	- [Sample Page 3](sample/sample-3.html)
+	- [sample-1](sample/sample-1.html)
+	- [sample-2](sample/sample-2.html)
+	- [sample-3](sample/sample-3.html)
+	- [sample-web-component](sample/sample-web-component.html)
 
 ## See Also
 

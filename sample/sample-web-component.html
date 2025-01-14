@@ -5,25 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
-	<link rel="stylesheet" href="field.css">
-	<link rel="stylesheet" href="field-button.css">
-	<link rel="stylesheet" href="field-input.css">
-	<link rel="stylesheet" href="page-width.css">
-	<style>
-		body {
-			margin: 0;
-		}
-
-		main {
-			margin-left: 1rem;
-			margin-right: 1rem;
-		}
-
-		.field {
-			margin-bottom: 1rem;
-			margin-top: 1rem;
-		}
-	</style>
+	<link rel="stylesheet" href="sample-web-component.css">
 </head>
 
 <body>
@@ -38,14 +20,14 @@
 					<div class="field-error-text"></div>
 				</div>
 
-				<sample-web-component label="Web Component 1" name="component-1" posthelptext="Help Text"
-					prehelptext="Help Text" required class="test"></sample-web-component>
+				<sample-component label="Web Component 1" name="component-1" posthelptext="Help Text"
+					prehelptext="Help Text" required class="test"></sample-component>
 
-				<sample-web-component label="Web Component 2" name="component-2" posthelptext="Help Text"
-					prehelptext="Help Text" required value="Text Value"></sample-web-component>
+				<sample-component label="Web Component 2" name="component-2" posthelptext="Help Text"
+					prehelptext="Help Text" required value="Text Value"></sample-component>
 
-				<sample-web-component label="Web Component 3" name="component-3" posthelptext="Help Text"
-					prehelptext="Help Text" required></sample-web-component>
+				<sample-component label="Web Component 3" name="component-3" posthelptext="Help Text"
+					prehelptext="Help Text" required></sample-component>
 
 				<p>
 					<input type="submit" value="Submit Form" class="field-button">
@@ -55,12 +37,7 @@
 		</div>
 	</main>
 
-	<script type="module">
-		import addFormFieldValidation from '../src/add-form-field-validation.js';
-		import './sample-web-component.js';
-
-		addFormFieldValidation(document.querySelector('form'));
-	</script>
+	<script type="module" src="sample-web-component.js"></script>
 </body>
 
 </html>

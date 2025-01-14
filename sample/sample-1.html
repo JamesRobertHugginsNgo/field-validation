@@ -5,26 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
-	<link rel="stylesheet" href="field.css">
-	<link rel="stylesheet" href="field-button.css">
-	<link rel="stylesheet" href="field-input.css">
-	<link rel="stylesheet" href="field-input-group.css">
-	<link rel="stylesheet" href="page-width.css">
-	<style>
-		body {
-			margin: 0;
-		}
-
-		main {
-			margin-left: 1rem;
-			margin-right: 1rem;
-		}
-
-		.field {
-			margin-bottom: 1rem;
-			margin-top: 1rem;
-		}
-	</style>
+	<link rel="stylesheet" href="sample-1.css">
 </head>
 
 <body>
@@ -102,25 +83,7 @@
 		</div>
 	</main>
 
-	<script type="module">
-		import addFormFieldValidation from '../src/add-form-field-validation.js';
-		addFormFieldValidation(document.querySelector('form'), (el) => {
-			switch (el.name) {
-				case 'text-field':
-					el.fieldValidation.validator = (inputEl) => {
-						if (inputEl.value === '0') {
-							inputEl.setCustomValidity('Value must not be 0');
-							return;
-						}
-						if (inputEl.value === 'ABC') {
-							inputEl.setCustomValidity('Value must not be ABC');
-							return;
-						}
-					};
-					break;
-			}
-		});
-	</script>
+	<script type="module" src="sample-1.js"></script>
 </body>
 
 </html>

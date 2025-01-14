@@ -1,0 +1,31 @@
+@import url(field.css);
+@import url(field-button.css);
+@import url(field-input.css);
+@import url(field-input-group.css);
+@import url(page-width.css);
+
+body {
+	margin: 0;
+}
+
+main {
+	margin-left: 1rem;
+	margin-right: 1rem;
+}
+
+.field {
+	margin-bottom: 1rem;
+	margin-top: 1rem;
+}
+
+.full-name {
+	display: flex;
+	gap: 1rem;
+
+	& * {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+		gap: 0.25rem;
+	}
+}
